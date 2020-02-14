@@ -32,9 +32,10 @@ function statement (invoice, plays) {
     if ('comedy' === play) volumeCredits += Math.floor(perf.audience / 5);
     // 注文の内訳を出力
     result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
-    thisAmount += thisAmount;
+    totalAmount += thisAmount;
+    return result;
   }
-  result += `Amount owed is ${format(thisAmount/100)}\n`;
+  result += `Amount owed is ${format(totalAmount/100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
 }
