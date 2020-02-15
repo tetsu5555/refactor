@@ -1,7 +1,5 @@
 const statement = require('../src/statement')
 
-
-
 test('Statement', () => {
   const invoice = {
     "customer": "BigCo",
@@ -34,7 +32,6 @@ test('Statement', () => {
 Amount owed is $1,730.00
 You earned 40 credits
 `
-
 
   expect(statement(invoice, plays)).toBe(result)
 })
