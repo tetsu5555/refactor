@@ -9,6 +9,6 @@
   },
   "globals": {},
   "rules": {
-    "semi": "warn"
+    "semi": ["error", "never"]
   }
 }
