@@ -6,15 +6,14 @@ module.exports = function statement (invoice, plays) {
   const format = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
 
   for (let perf of invoice.performances) {
-    const play = plays[perf.playID];
-    const thisAmount = amounFor(play, perf);
+    const thisAmount = amounFor(playFor(perf), perf);
 
     // ボリューム特典のポイントを加算
     volumeCredits += Math.max(perf.audience - 30, 0);
     // 喜劇のときは10人につき、さらにポイントを加算
-    if ('comedy' === play) volumeCredits += Math.floor(perf.audience / 5);
+    if ('comedy' === playFor(perf)) volumeCredits += Math.floor(perf.audience / 5);
     // 注文の内訳を出力
-    result += ` ${play.name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
+    result += ` ${playFor(perf).name}: ${format(thisAmount/100)} (${perf.audience} seats)\n`;
     totalAmount += thisAmount;
   }
   result += `Amount owed is ${format(totalAmount/100)}\n`;
@@ -41,5 +40,9 @@ module.exports = function statement (invoice, plays) {
       throw new Error(`unknown type: ${play.type}`);
     }
     return result;
+  }
+
+  function playFor(aPerformance) {
+    return plays[aPerformance.playID];
   }
 }
