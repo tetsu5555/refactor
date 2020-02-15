@@ -21,7 +21,7 @@ module.exports = function statement (invoice, plays) {
   return result;
 
   function amounFor(play, aPerformance) {
-    let result = 0
+    let result = 0;
     switch(play.type) {
     case "tragedy":
       result = 40000;
@@ -45,4 +45,4 @@ module.exports = function statement (invoice, plays) {
   function playFor(aPerformance) {
     return plays[aPerformance.playID];
   }
-}
+};

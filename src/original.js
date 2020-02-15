@@ -7,7 +7,7 @@ module.exports = function statement (invoice, plays) {
 
   for (let perf of invoice.performances) {
     const play = plays[perf.playID];
-    let thisAmount = 0
+    let thisAmount = 0;
 
     switch(play.type) {
     case "tragedy":
@@ -38,4 +38,4 @@ module.exports = function statement (invoice, plays) {
   result += `Amount owed is ${format(totalAmount/100)}\n`;
   result += `You earned ${volumeCredits} credits\n`;
   return result;
-}
+};
