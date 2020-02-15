@@ -5,7 +5,8 @@
   "main": "execute.js",
   "scripts": {
     "start": "node src/execute.js",
-    "lint": "eslint src/*.js"
+    "lint": "eslint src/*.js",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "eslint-plugin-node": "^11.0.0",
+    "jest": "^25.1.0",
     "node-inspect": "^1.11.6"
   }
 }
