@@ -12,6 +12,7 @@
   "license": "ISC",
   "devDependencies": {
     "eslint": "^6.8.0",
+    "eslint-plugin-node": "^11.0.0",
     "node-inspect": "^1.11.6"
   }
 }

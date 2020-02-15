@@ -1,14 +1,14 @@
 {
-  "extends": ["eslint:recommended"],
-  "plugins": [],
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "plugins": ["node"],
   "parserOptions": {},
   "env": {
     "node": true,
-    "es6": true,
-    "browser": true
+    "es6": true
   },
   "globals": {},
   "rules": {
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "node/no-unsupported-features": ["error", {"version": 10}]
   }
 }
