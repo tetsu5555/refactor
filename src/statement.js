@@ -6,7 +6,6 @@ module.exports = function statement (invoice, plays) {
   const format = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format;
 
   for (let perf of invoice.performances) {
-    console.log(perf)
     const play = plays[perf.playID];
     const thisAmount = amounFor(play, perf);
 
