@@ -6,6 +6,5 @@ test('price', () => {
     quantity: 4
   }
 
-  console.log(price(order))
   expect(price(order)).toBe(20100)
 })
