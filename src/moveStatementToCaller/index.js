@@ -18,6 +18,7 @@ function listRecentPhotos(outStream, photos) {
     })
 }
 
+// インライン化を行ったことでこの関数は使われなくなった
 function emitPhotoData(outStream, photo) {
   zztmp(outStream, photo)
   outStream.write(`<p>location: ${photo.location}</p>\n`)
