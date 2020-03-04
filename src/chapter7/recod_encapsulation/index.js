@@ -1,12 +1,17 @@
 class Organization {
   constructor(data) {
-    this._data = data
+    this.name = data.name
+    this.country = data.country
   }
 
   // setterを生やす
-  set name(aString) { this._data.name = aString }
+  set name(aString) { this.name = aString }
   // getterを生やす
-  get name() { return this._data.name }
+  get name() { return this.name }
+
+  set country(aCountryCode) { this.country = aCountryCode }
+
+  get country() { return this.country }
 }
 
 const organization = new Organization({ name: "Acme Gooseberries", country: "GB" })
