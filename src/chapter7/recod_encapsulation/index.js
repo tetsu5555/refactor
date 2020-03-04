@@ -1,7 +1,14 @@
-const organization = { name: "Acme Gooseberries", country: "GB" }
+class Organization {
+  constructor(data) {
+    this._data = data
+  }
+}
+
+const organization = new Organization({ name: "Acme Gooseberries", country: "GB" })
 
 // オブジェクトを返す関数を定義
-function getRawDataOrganization() { return organization; }
+function getRawDataOrganization() { return organization._data }
+function getOrganization() { return organization }
 
 function main() {
   let result = ""
