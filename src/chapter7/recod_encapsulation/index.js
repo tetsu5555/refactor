@@ -1,12 +1,15 @@
+const organization = { name: "Acme Gooseberries", country: "GB" }
+
+// オブジェクトを返す関数を定義
+function getRawDataOrganization() { return organization; }
+
 function main() {
-  const organization = { name: "Acme Gooseberries", country: "GB" }
-
   let result = ""
-  result += `<h1>${organization.name}</h1>\n`
+  result += `<h1>${getRawDataOrganization().name}</h1>\n`
 
-  organization.name = "Hoge"
+  getRawDataOrganization().name = "Hoge"
 
-  result += `<h1>${organization.name}</h1>`
+  result += `<h1>${getRawDataOrganization().name}</h1>`
 
   console.log(result)
 }
