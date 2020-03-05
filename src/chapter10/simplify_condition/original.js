@@ -33,15 +33,29 @@ function airSpeedVelocity(bird) {
 }
 
 function main() {
-  const bird = {
-    type: "EuropeanSwallow",
-    numberOfCoconuts: 0,
-    isNailed: false,
-    voltage: 0
-  }
+  const birds = [
+    {
+      name: 'tarou',
+      type: "EuropeanSwallow",
+      numberOfCoconuts: 0,
+      isNailed: false,
+      voltage: 0
+    },
+    {
+      name: 'tarou2',
+      type: "AfricanSwallow",
+      numberOfCoconuts: 0,
+      isNailed: false,
+      voltage: 0
+    },
+    {
+      name: 'tarou3',
+      type: "NoBird"
+    }
+  ]
 
-  console.log(plumage(bird))
-  console.log(airSpeedVelocity(bird))
+  console.log("plumages", plumages(birds))
+  console.log("speeds", speeds(birds))
 }
 
 main()
