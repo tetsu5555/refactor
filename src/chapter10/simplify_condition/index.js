@@ -1,32 +1,16 @@
+// スーパークラスのBirdは必要ない
+// 各クラスがドメイン内でどのように関係しているかを説明できるため不要でもスーパークラスを残す方がいい
 class Bird {
   constructor(birdObject) {
     Object.assign(this, birdObject)
   }
 
   get plumage() {
-    switch(this.type) {
-    case "EuropeanSwallow":
-      throw "ooops"
-    case "AfricanSwallow":
-      return (this.numberOfCoconuts > 2) ? "tired" : "average"
-    case "NorwegianBlueParrot":
-      return (this.voltage > 100) ? "scorched" : "beautiful"
-    default:
-        return "unknown"
-    }
+    return "unknown"
   }
 
   get airSpeedVelocity() {
-    switch(this.type) {
-    case "EuropeanSwallow":
-      return 35
-    case "AfricanSwallow":
-      return 42 - 2 * this.numberOfCoconuts
-    case "NorwegianBlueParrot":
-      return (this.isNailed) ? 0 : 10 + this.voltage / 10
-    default:
-        return null
-    }
+    return null
   }
 }
 
@@ -35,14 +19,30 @@ class EuropeanSwallow extends Bird {
   get plumage() {
     return "average"
   }
+
+  get airSpeedVelocity() {
+    return 35
+  }
 }
 
 class AfricanSwallow extends Bird {
+  get plumage() {
+    return (this.numberOfCoconuts > 2) ? "tired" : "average"
+  }
 
+  get airSpeedVelocity() {
+    return 42 - 2 * this.numberOfCoconuts
+  }
 }
 
 class NorwegianBlueParrot extends Bird {
+  get plumage() {
+    return (this.voltage > 100) ? "scorched" : "beautiful"
+  }
 
+  get airSpeedVelocity() {
+    return (this.isNailed) ? 0 : 10 + this.voltage / 10
+  }
 }
 
 // bird.typeによって返す classを変える
@@ -60,33 +60,41 @@ function createBird(bird) {
 }
 
 function plumages(birds) {
-  return new Map(birds.map(b => [b.name, plumage(b)]))
+  return new Map(birds
+    .map(b => createBird(b))
+    .map(bird => [bird.name, bird.plumage]))
 }
 
 function speeds(birds) {
-  return new Map(birds.map(b => [b.name, airSpeedVelocity(b)]))
-}
-
-// Birdクラスに処理を集約させた
-function plumage(bird) {
-  return createBird(bird).plumage
-}
-
-// Birdクラスに処理を集約させた
-function airSpeedVelocity(bird) {
-  return createBird(bird).airSpeedVelocity
+  return new Map(birds
+    .map(b => createBird(b))
+    .map(bird => [bird.name, bird.airSpeedVelocity]))
 }
 
 function main() {
-  const bird = {
-    type: "EuropeanSwallow",
-    numberOfCoconuts: 0,
-    isNailed: false,
-    voltage: 0
-  }
+  const birds = [
+    {
+      name: 'tarou',
+      type: "EuropeanSwallow",
+      numberOfCoconuts: 0,
+      isNailed: false,
+      voltage: 0
+    },
+    {
+      name: 'tarou2',
+      type: "AfricanSwallow",
+      numberOfCoconuts: 0,
+      isNailed: false,
+      voltage: 0
+    },
+    {
+      name: 'tarou3',
+      type: "NoBird"
+    }
+  ]
 
-  console.log(plumage(bird))
-  console.log(airSpeedVelocity(bird))
+  console.log("plumages", plumages(birds))
+  console.log("speeds", speeds(birds))
 }
 
 main()
