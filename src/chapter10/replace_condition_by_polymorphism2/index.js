@@ -1,5 +1,10 @@
 function rating(voyage, history) {
-  return new Rating(voyage, history).value
+  return createRating(voyage, history).value
+}
+
+function createRating(voyage, history) {
+  if (voyage.zone === "china" && history.some(v => "china" === v.zone)) return new ExperiencedChinaRating(voyage, history)
+  else return new Rating(voyage, history)
 }
 
 // ポリモーフィズムを導入するにはクラス構造を作成する必要があるため
@@ -53,6 +58,9 @@ class Rating {
     }
     return result
   }
+}
+
+class ExperiencedChinaRating extends Rating {
 }
 
 function main() {
