@@ -6,7 +6,7 @@ class Bird {
   get plumage() {
     switch(this.type) {
     case "EuropeanSwallow":
-      return "average"
+      throw "ooops"
     case "AfricanSwallow":
       return (this.numberOfCoconuts > 2) ? "tired" : "average"
     case "NorwegianBlueParrot":
@@ -30,8 +30,11 @@ class Bird {
   }
 }
 
+// 処理をオーバーライドしていく
 class EuropeanSwallow extends Bird {
-
+  get plumage() {
+    return "average"
+  }
 }
 
 class AfricanSwallow extends Bird {
@@ -42,6 +45,7 @@ class NorwegianBlueParrot extends Bird {
 
 }
 
+// bird.typeによって返す classを変える
 function createBird(bird) {
   switch(bird.type) {
     case "EuropeanSwallow":
