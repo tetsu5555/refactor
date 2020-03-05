@@ -35,8 +35,7 @@ class Rating {
     let result = 1
     if (this.history.length < 5) result += 4
     result += this.history.filter(v => v.profit < 0)
-    if (this.voyage.zone === "china" && this.hasChinaHistory) result += 2
-    return Math.max(result, 2)
+    return Math.max(result, 0)
   }
 
   get hasChinaHistory() {
@@ -61,6 +60,10 @@ class Rating {
 }
 
 class ExperiencedChinaRating extends Rating {
+    get captainHistoryRisk() {
+      const result = super.captainHistoryRisk - 2
+      return Math.max(result, 0)
+    }
 }
 
 function main() {
