@@ -30,6 +30,31 @@ class Bird {
   }
 }
 
+class EuropeanSwallow extends Bird {
+
+}
+
+class AfricanSwallow extends Bird {
+
+}
+
+class NorwegianBlueParrot extends Bird {
+
+}
+
+function createBird(bird) {
+  switch(bird.type) {
+    case "EuropeanSwallow":
+      return new EuropeanSwallow(bird)
+    case "AfricanSwallow":
+      return new AfricanSwallow(bird)
+    case "NorwegianBlueParrot":
+      return new NorwegianBlueParrot(bird)
+    default:
+        return new Bird(bird)
+    }
+}
+
 function plumages(birds) {
   return new Map(birds.map(b => [b.name, plumage(b)]))
 }
@@ -40,12 +65,12 @@ function speeds(birds) {
 
 // Birdクラスに処理を集約させた
 function plumage(bird) {
-  return new Bird(bird).plumage
+  return createBird(bird).plumage
 }
 
 // Birdクラスに処理を集約させた
 function airSpeedVelocity(bird) {
-  return new Bird(bird).airSpeedVelocity
+  return createBird(bird).airSpeedVelocity
 }
 
 function main() {
