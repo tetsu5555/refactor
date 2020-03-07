@@ -1,15 +1,5 @@
-function alaertForMiscreant(people) {
-  for (const p of people) {
-    if(p === "Don") {
-      setOffAlerms()
-      return "Don"
-    }
-    if (p === "John") {
-      setOffAlerms()
-      return "John"
-    }
-    return ""
-  }
+function alartForMiscreant(people) {
+  if (findMiscreant(people) !== "") setOffAlerms()
 }
 
 // コピーして問い合わせの内容にちなんだ名前をつける
@@ -21,8 +11,8 @@ function findMiscreant(people) {
     if (p === "John") {
       return "John"
     }
-    return ""
   }
+  return ""
 }
 
 function setOffAlerms() {
@@ -32,7 +22,8 @@ function setOffAlerms() {
 
 function main() {
   const people = []
-  alaertForMiscreant(people)
+  // 呼び出し側を調べて問い合わせの関数で呼び出し側を書き換え
+  alartForMiscreant(people)
 }
 
 main()
