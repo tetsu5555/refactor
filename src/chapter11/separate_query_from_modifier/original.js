@@ -16,3 +16,10 @@ function setOffAlerms() {
   // alerm
   // 副作用あり
 }
+
+function main() {
+  const people = []
+  alaertForMiscreant(people)
+}
+
+main()
