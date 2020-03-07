@@ -1,5 +1,6 @@
 class Organization {
   constructor(data) {
+    // 入力レコードデータとのつながりを断ち切れる
     this.name = data.name
     this.country = data.country
   }
