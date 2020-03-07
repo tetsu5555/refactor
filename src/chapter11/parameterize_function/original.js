@@ -10,6 +10,8 @@ function bottomBand(usage) {
   return Math.min(usage, 100)
 }
 
+// 関連する複数の関数をパラメータ付きにしようとする時は関数を一つ取り上げてそれにパラメータを追加する
+// 範囲に基づくロジックでは通常中間の値から手を付けるらしい
 function middleBand(usage) {
   return usage > 100 ? Math.min(usage, 200) - 100 : 0
 }
