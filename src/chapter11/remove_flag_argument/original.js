@@ -9,6 +9,7 @@ function setDimension(name, value) {
   }
 }
 
+// 条件記述の分解を行う
 function deliveryDate(anOder, isRush) {
   if (isRush) {
     let deliveryTime
