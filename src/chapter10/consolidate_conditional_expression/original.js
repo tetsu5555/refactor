@@ -4,7 +4,7 @@ function disabilityAmount(anEmployee) {
   if (anEmployee.isPartTime) return 0
 
   if (anEmployee.onVacation) {
-    if (anEmployee.sno > 10) {
+    if (anEmployee.seniority > 10) {
       return 0
     }
     return 0.5
